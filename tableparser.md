@@ -31,6 +31,14 @@
 **`header_num`**: 表头所占行（列）个数
 
 ###成员函数
+**`def register_udf(self, row, col, udf)`**:
 
+为（row,cols)制定的单元格注册用户自定义处理函数
+- row: 行号
+- col: 列号
+- udf: 用户自定义函数，接收一个字符串作为参数
+
+
+**`def charge_valid(self)`**: 判断表格是否为数据表格，返回
 
 
