@@ -57,6 +57,10 @@
 - `header_num`: 表头所占行（列）数
 - `return`: None
 
+**`def parse_caption(self, header)`**:
+根据表头数据解析出表格标题
+- `return`: 表格标题，如果不存在标题则返回空
+
 **`def show(self)`**:
 向屏幕打印表格概况
 
