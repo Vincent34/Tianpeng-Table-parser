@@ -17,9 +17,31 @@ while (count(different_col_id) < table.cols)
 ```
 
 ## 判断表格方向
-表格方向判断存在两套标准：
+表格有两种方向:
+- 横向：一行代表一个元素
+- 纵向：一列代表一个元素
+
+
+表格方向判断使用标准：
 1. 如果存在`<th>`标签，或者表格的首行（列）存在`<strong>`标签，则意味着存在表头加粗的情况，从而根据表头的方向（行或者列）判断整个表格的方向
 2. 如果不存在上述情况，判断每一行（列）的数据相似度，相似行（列）所占总行（列）数比例大的一种方向获胜
-```
+3. 不能判断时默认为横向的
 
+```
+if first_row_is_strong:
+  return horizontal;
+if first_col_is_strong:
+  return vertical;
+
+same_cols = same_rows = 0;
+for each col：
+  if col_is_same:
+    same_cols++;
+for each row:
+  if row_is_same:
+    same_rows++;
+if (same_cols / cols >= same_rows / rows):
+  return horizontal;
+else:
+  return vertical;
 ```
