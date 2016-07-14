@@ -32,13 +32,59 @@
 
 ###成员函数
 **`def register_udf(self, row, col, udf)`**:
-
 为（row,cols)制定的单元格注册用户自定义处理函数
-- row: 行号
-- col: 列号
-- udf: 用户自定义函数，接收一个字符串作为参数
+- `row`: 行号
+- `col`: 列号
+- `udf`: 用户自定义函数，接收一个字符串作为参数
+- `return`: None
 
 
-**`def charge_valid(self)`**: 判断表格是否为数据表格，返回
+**`def charge_valid(self)`**: 
+判断表格是否为数据表格
+- `return`: None
 
+**`def charge_style(self)`**:
+判断表格样式
+- `return`: 一个数字表示样式，0：横排，一行表达一个元素； 1：竖排，一列表达一个元素
+
+**`def parse_data(self)`**:
+解析表格原始数据，填充data成员变量
+- `return`: None
+
+**`def parse_struct(self, type = 0, header_num = -1)`**:
+结构化解析表格数据
+- `type`: 表格样式
+- `header_num`: 表头所占行（列）数
+- `return`: None
+
+**`def show(self)`**:
+向屏幕打印表格概况
+
+**`def show_data(self)`**:
+向屏幕打印表格数据
+
+##Cell
+###概况
+表示一个单元格
+###成员变量
+**`content`**: 单元格内容
+
+**`type`**: 单元格样式（是否被加粗）
+
+**`id`**: 单元格id，用来区分不同的块
+
+**`udf`**: 用户取数据的函数
+###成员函数
+**`def get(self)`**: 根据`udf`按照一定格式取出表格数据
+- `return`: 依据`udf`的返回值而定
+
+**`def decode(self)`**: 将一个单元格解析成json字符串
+- `return`: json字符串
+
+**`def encode(self, encodejson)`**: 通过一个json字符串解析出一个单元格
+- `return`: None
+
+**`def register(self, f)`**: 将`f`注册为此单元格的`udf`
+- `return`: None
+  
 
